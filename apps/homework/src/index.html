@@ -1,14 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>Homework</title>
-    <base href="/" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/x-icon" href="favicon.ico" />
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+<head>
+  <meta charset="utf-8" />
+  <title>Homework</title>
+  <base href="/" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script>
+    function IsJsonString(str) {
+      try {
+        JSON.parse(str);
+      } catch (e) {
+        return false;
+      }
+      return true;
+    }
+
+    let valuesToInject = '{"email": "john.doe@example.com", "company": "Example Inc.","company_id":"65860b7706fa491890dc8bf4cf0c230e"}';
+
+    let injectedFromFlask = '{{ initial_data | safe}}';
+
+    if (IsJsonString(injectedFromFlask)) {
+      valuesToInject = injectedFromFlask;
+      console.log('inject from flask')
+    }
+    window.token = JSON.parse(valuesToInject);
+  </script>
+</head>
+
+<body>
+  <div id="root"></div>
+</body>
+
 </html>

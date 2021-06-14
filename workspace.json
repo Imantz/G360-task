@@ -74,6 +74,7 @@
           "executor": "@nrwl/web:dev-server",
           "options": {
             "buildTarget": "homework:build",
+            "proxyConfig": "apps/homework/proxy.conf.json",
             "hmr": true
           },
           "configurations": {
